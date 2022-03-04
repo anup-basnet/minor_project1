@@ -7,4 +7,7 @@ urlpatterns = [
     path('logout/', views.LogoutView.as_view(), name="logout"),
     path('register/', views.RegisterView.as_view(), name="register"),
     path('team/<int:team_id>', views.TeamView.as_view(), name='team'),
+
+    path('help/', views.helpPage, name="help"),
+    path('fixtures/', views.fixturesPage, name="fixtures"),
 ]

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     {% load static %}
     <head>
@@ -7,9 +8,12 @@
         <title>Fantasy Premier League, Official Fantasy Football Game of the Premier League</title>
 
         <link rel="stylesheet" href="{% static 'players/css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'players/css/team.css' %}">
         <script src="https://kit.fontawesome.com/3542668ab7.js" crossorigin="anonymous"></script>
 
-
+        <!-- javascript  -->
+        <script src="{% static 'players/js/script.js' %}" defer></script>
+        </body>
     </head>
 
     <body>
@@ -23,7 +27,7 @@
                     <li>
                         <a href="https://www.arsenal.com/?utm_source=premier-league-website&utm_campaign=website&utm_medium=link"
                             class="logo" target="_blank">
-                            <img src="{% static "players/images/logos/arsenal-fc-logo.png" %}" alt="Arsenal" class="club-logo">
+                            <img src="{% static 'players/images/logos/arsenal-fc-logo.png' %}" alt="Arsenal" class="club-logo">
                         </a>
                     </li>
                     <li>
@@ -148,7 +152,6 @@
 
             </nav>
             <!-- tabs navbar  -->
-
             <!-- main nav  -->
             <div class="navWrapper">
                 <div class="navImage">
@@ -160,8 +163,8 @@
                         <li><a href="{% url 'home' %}" class="nav-link">Status</a></li>
                         <li><a href="#" class="nav-link">Fixtures</a></li>
                         <li><a href="#" class="nav-link">Stats</a></li>
-                        <li><a href="#" class="nav-link">Prizes</a></li>
-                        <li><a href="#" class="nav-link">Help</a></li>
+                        <!-- <li><a href="#" class="nav-link">Prizes</a></li> -->
+                        <li><a href="{% url 'help' %}"  class="nav-link">Help</a></li>
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'team' team_id %}" class="nav-link">Points</a></li>
                         <li><a href="{% url 'index' team_id %}" class="nav-link">Pick Team</a></li>
@@ -175,56 +178,29 @@
                     </ul>
                 </div>
             </div>
-                {% block content %}
-                {% endblock content %}
-            <!-- start template inheritance  -->
-            <!--<div class="status-wrapper">
-                <div class="user-info">
-                    <p>
-                        You are logged in as <span id="userName">firstName lastName</span>
-                    </p>
+            
+            {% block content %}
+                <div class="wrapper">
+                    
                 </div>
-                <h2 class="status-title">
-                    Gameweek <span id="gameweekNumber">1</span> status
-                </h2>
-                <div class="game-table">
-                    <table class="game-table-show">
-                        <thead class="game-head">
-                            <tr>
-                                <th>Day</th>
-                                <th>Match Points</th>
-                                <th>Bonus Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>day 1</th>
-                                <td>Confirmed</td>
-                                <td>Added</td>
-                            </tr>
-
-                            <tr>
-                                <th>day 2</th>
-                                <td>Confirmed</td>
-                                <td>Added</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>-->
-            </div>
+            {% endblock content %}
+            
         </header>
 
         <!-- template inheritance end  -->
-        <footer class="end">
+        <!-- <footer class="end">
             <div>
                 <strong>&copy; premier league 2021</strong>
             </div>
             <a href="#">Back to top</a>
+        </footer> -->
+        <footer class="bottom">
+            <div>
+                &copy; PREMIER LEAGUE 2021/22
+                <div class="AAA">powered by <span>AAA</span></div>
+            </div>
+            <a href="#">Back to Top</a>
         </footer>
 
-        <!-- javascript  -->
-        <script src="{% static 'players/js/script.js' %}"></script>
-    </body>
 
 </html>

@@ -162,7 +162,7 @@ class HomeView(View):
                 'team_id': team_id,
             }
             return render(request, 'players/home.html', context)
-        return render(request, 'players/home.html')
+        return render(request, 'status.html')
 
 
 class LoginView(View):
@@ -244,10 +244,36 @@ class TeamView(View):
         # print(team.players.filter(type='FWD'))
         # print(team_id)
         # print(players)
+
+        # --------------------lastName--------------
+        # Function which returns last word
+        my_players = []
+
+        def lastName(player):
+            player = player
+            fullName = list(player.split(' '))
+            length = len(fullName)
+            return fullName[length-1]
+
+        # player = "Learn algorithms at geeksforgeeks"
+        # print(lastName(player))
+        print('\n'*3)
+        # -----------------------------------------
+
         for player in players:
             total_point += player.points
+            # player_name = lastName(player)
+            # my_players.append(player_name)
+            print(player)
         # print(total_point)
+        # -----------------test------------------
+        print('\n'*5)
+        print(players)
+        print('\n'*5)
+
+        # ------------------------------------------
         names = team
+
         context = {
             'players': players,
             'name': names,
@@ -255,3 +281,12 @@ class TeamView(View):
             'total': total_point,
         }
         return render(request, 'players/teamsheet.html', context)
+
+
+def helpPage(request):
+    return render(request, 'help.html')
+
+
+def fixturesPage(request):
+    context = {}
+    return render(request, 'players/fixtures.html', context)
